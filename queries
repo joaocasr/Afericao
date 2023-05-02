@@ -1,0 +1,30 @@
+1) 300 - db.exames.find().count()
+2) 138 - db.exames.find({'resultado':true}).count()
+3) Feminino - 142 - db.exames.find({'género':'F'}).count(); Masculino-158 - db.exames.find({'género':'M'}).count()
+4)
+Parapente -19;
+Andebol-18;
+Karaté -15 ;
+Atletismo -18;
+Triatlo - 23 ;
+Futebol-24;
+Basquetebol- 13;
+BTT-18; Patinagem-18;
+SUP-16;
+Dança-17;
+Orientação-19;
+Ténis-10;
+Ciclismo-18;            
+Badminton-21;
+Esgrima-20;
+Equitação-13
+
+db.exames.aggregate( [ { $group : { _id : "$modalidade" } } ] )
+db.exames.find({'modalidade': nome da modalidade}).count()
+
+5) 12
+db.exames.find({$and:[{'clube':'GDGoma'},{'federado':true}]}).count()
+
+6) 9
+
+db.exames.find({$and:[{'género':'F'},{'modalidade':'Triatlo'}]}).count()
