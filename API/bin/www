@@ -82,5 +82,5 @@ function onError(error) {
  */
 
 function onListening() {
-  console.log("LISTENING..."+port)
+  console.log("À escuta na porta: "+port)
 }

@@ -1,7 +1,7 @@
 var examModel = require('../models/emd')
 
 module.exports.list = () => {
-    return examModel.find({},{'_id':1,'nome':1,'dataEMD':1,'resultado':1})
+    return examModel.find({},{'_id':1,'nome':1,'dataEMD':1,'género':1,'idade':1,'resultado':1})
         .then(dados => {
             return dados
         })
