@@ -1,0 +1,31 @@
+db.pessoas.aggregate({$match:{_id:'p14'}},{$project:{num:{$size:"$desportos"}}})
+número de desportos praticados por p14
+--------------------------------------------------------------------------------
+
+db.pessoas.findOne({_id:'p14'},{"descrição":1})
+descricao de p14
+----------------------------------------------------------
+
+db.pessoas.aggregate({$unwind:"$desportos"},{$group:{_id:"$desportos",occurrences:{$sum:1}}})
+distribuicao de todos os desportos praticados por pessoas (cada pessoa possui uma lista de desportos)
+--------------------------------------------
+
+db.exames.aggregate([{$group:{_id:"$género",occ:{$sum:1}}}])
+distribuicao de exames por genero
+------------------------------------------------
+
+db.exames.aggregate([{$match:{"clube":"GDGoma"}},{$group:{_id:"$clube",occ:{$sum:1}}}])
+distribuicao de exames de pessoas que tem clube = GDGoma
+------------------------------------------------
+
+db.pessoas.aggregate([{$unwind:"$desportos"},{$match:{"desportos":"Paintball"}},{$group:{_id:"$desportos",occ:{$sum:1}}}])
+distribuicao de exames de pessoas que possuem Paintball na lista de desportos
+------------------------------------------------
+
+db.pessoas.aggregate([{$unwind:"$desportos"},{$match:{$and:[{"sexo":"feminino","marca_carro":"Volkswagen"}]}},{$group:{_id:"$desportos",occ:{$sum:1}}}])
+distribuicao de todos os desportos que sao praticados por pessoas do sexo feminino com Volkswagen
+.................................................
+
+db.exames.aggregate([{$match:{"clube":"ABCbraga"}},{$sort:{"nome":1}},{$project:{"nome":1}}])
+lista ordenada de todos os nomes de pessoas cujo clube é ABCbraga
+.........................................................
